@@ -1,4 +1,4 @@
-# React + Vite
+# Lil' Todos Exercise before lunch
 
 You need to be able to toggle Todos into their `complete` and `incomplete` states!
 
