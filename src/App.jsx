@@ -1,54 +1,79 @@
 
-import User from './components/User'
-import UserList from './components/UserList'
-import Button from '@mui/material/Button';
-import ShoppingCartRounded from '@mui/icons-material/ShoppingCartRounded';
+import { useState } from 'react'
+import Todo from './components/Todo'
+import todosJSON from './assets/todos.json'
 
 function App() {
 
-  const users = [
-    {
-      id: 1,
-      name: "Leanne Graham",
-      username: "Bret",
-      email: "Sincere@april.biz",
-      balance: 600
-    },
-    {
-      id: 2,
-      name: "Ervin Howell",
-      username: "Antonette",
-      email: "Shanna@melissa.tv",
-      balance: 200
-    },
-    {
-      id: 3,
-      name: "Clementine Bauch",
-      username: "Samantha",
-      email: "Nathan@yesenia.net",
-      balance: 6000
-    }
-  ]
+  const [todos, setTodos] = useState(todosJSON)
+
+  const clearList = () => {
+    setTodos([])
+  }
+
+  const refreshList = () => {
+    setTodos(todosJSON)
+  }
+
+  // set todos array to have all its elements
+  // EXCEPT for the one we're deleting!
+  const deleteTodo = (id) => {
+
+    console.log(`Deleting the todo with id ${id}.`)
+    setTodos(todos.filter(todo => todo.id !== id))
+
+  }
+
+  // retrieve the todo id, toggle its "complete" variable
+  const toggleTodo = (id) => {
+
+      // create a copy of the array ie. [...array]
+      // loop the array and change the todo with "id" in this parameter
+      // update todos setTodos(changedArray)
+
+  }
+
+  // use a filter to get only completed todos
+  // and setTodos to that filtered array
+  const showOnlyCompleted = () => {
+
+    setTodos(todosJSON.filter(todo => todo.completed == true))
+    
+  }
+  
+  // use a filter to get only incomplete todos
+  // and setTodos to that filtered array
+  const showOnlyIncomplete = () => {
+    
+    setTodos(todosJSON.filter(todo => todo.completed == false))
+
+  }
 
   return (
-    <>
-      <UserList>
-        <User user={users[0]} />
-        <User user={users[1]} />
-        <User user={users[2]} />
-      </UserList>
+    <div className={`container`}>
 
-      <Button variant="text" startIcon={<ShoppingCartRounded />}>
-        Add item
-      </Button>
-      <Button variant="contained" startIcon={<ShoppingCartRounded />}>
-        Add item
-      </Button>
-      <Button variant="outlined" startIcon={<ShoppingCartRounded />}>
-        Add item
-      </Button>
+      <h2>Todo List</h2>
 
-    </>
+      <div className='actions'>
+        <button onClick={showOnlyIncomplete}> Incomplete </button>
+        <button onClick={showOnlyCompleted}> Completed </button>
+        <button onClick={clearList}>Clear List</button>
+        <button onClick={refreshList}>Refresh List</button>
+      </div>
+
+      <div className='todo-list'>
+
+        {todos.map(todo =>
+          <Todo
+            key={todo.id}
+            updateTodo={updateTodo}
+            deleteTodo={deleteTodo}
+            todo={todo}
+          />)}
+
+      </div>
+
+    </div>
   )
 }
 

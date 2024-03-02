@@ -97,3 +97,35 @@ button.fancy{
 .user:nth-child(odd){
   background-color: #333;
 }
+
+.container{
+  padding: 120px;
+}
+
+.todo {
+  padding: 12px 14px;
+  border-radius: 8px;
+  background-color: #f9f9f944;
+  display: flex;
+  justify-content: space-between;
+}
+
+.todo-list{
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.todo svg{
+  cursor: pointer;
+}
+
+.todo.complete{
+  background-color: #a0e49944;
+}
+
+.container > .actions{
+  display: flex;
+  margin-bottom: 12px;
+  gap: 12px;
+}
