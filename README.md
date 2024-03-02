@@ -1,6 +1,6 @@
 # Lil' Todos Exercise before lunch
 
-- Make sure you do `npm install` after you clone this repo!
+Make sure you do `npm install`, then `npm run dev` after you clone this repo!
 
 You need to be able to toggle Todos into their `complete` and `incomplete` states!
 
