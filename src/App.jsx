@@ -15,7 +15,8 @@ function App() {
     setTodos(todosJSON)
   }
 
-  // set todos array to have all its elements
+  // delete button function: 
+  //set todos array to have all its elements
   // EXCEPT for the one we're deleting!
   const deleteTodo = (id) => {
 
