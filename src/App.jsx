@@ -28,8 +28,15 @@ function App() {
   const toggleTodo = (id) => {
 
       // create a copy of the array ie. [...array]
+      const newTodos = [...todos]
       // loop the array and change the todo with "id" in this parameter
+      newTodos.forEach((todo) => {
+        if(todo.id === id){
+          todo.completed = !todo.completed
+        }
+      })
       // update todos setTodos(changedArray)
+      setTodos(newTodos)
 
   }
 
@@ -66,7 +73,7 @@ function App() {
         {todos.map(todo =>
           <Todo
             key={todo.id}
-            updateTodo={updateTodo}
+            toggleTodo={toggleTodo}
             deleteTodo={deleteTodo}
             todo={todo}
           />)}

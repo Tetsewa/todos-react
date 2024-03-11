@@ -1,9 +1,9 @@
-import React from 'react'
+
 import DeleteIcon from '@mui/icons-material/Delete';
 import DoneIcon from '@mui/icons-material/Done';
 import UndoIcon from '@mui/icons-material/Undo';
 
-function Todo({ todo, deleteTodo }) {
+function Todo({ todo, deleteTodo, toggleTodo }) {
 
     const { id, title, completed } = todo
     const isCompleteClass = completed ? "complete" : "incomplete"
@@ -18,11 +18,11 @@ function Todo({ todo, deleteTodo }) {
             <div className='actions'>
 
                 {completed
-                    ? <UndoIcon />
-                    : <DoneIcon />
+                    ? <UndoIcon onClick = {() => toggleTodo(id)} />
+                    : <DoneIcon onClick = {() => toggleTodo(id)} />
                 }
 
-
+                
                 <DeleteIcon onClick={() => deleteTodo(id)} />
             </div>
 
